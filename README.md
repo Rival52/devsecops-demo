@@ -180,3 +180,71 @@ npm run build
 # ou
 yarn build
 ```
+
+## 🛠️ Installation de Kind (Kubernetes IN Docker)
+
+`kind` permet de créer facilement des clusters Kubernetes locaux pour les tests et le développement.
+
+### Étapes d'installation
+
+1. Télécharger `kind` selon votre architecture :
+
+```bash
+# Pour AMD64 / x86_64
+[ $(uname -m) = x86_64 ] && curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.29.0/kind-linux-amd64
+
+# Pour ARM64
+[ $(uname -m) = aarch64 ] && curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.29.0/kind-linux-arm64
+Rendre le binaire exécutable :
+
+chmod +x ./kind
+
+
+#Déplacer kind vers un répertoire accessible globalement :
+
+sudo mv ./kind /usr/local/bin/kind
+
+
+#Vérifier l'installation :
+
+kind --version
+```
+2. Création Cluster
+```bash
+kind create cluster --name=devsecops-demo-cluster
+```
+3. Kubernetes installation
+```bash
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+# install
+sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+kubectl config current-context
+```
+4. Argo CD
+```bash
+kubectl create namespace argocd
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+# Check
+kubectl get pods -n argocd -w
+
+# commande utilisée pour rediriger le trafic du port local 9000 vers le port 80 du service argocd-server dans l'espace de noms argocd
+
+kubectl port-forward svc/argocd-server 9000:80 -n argocd
+kubectl port-forward svc/argocd-server 9000:80 -n argocd --address 0.0.0.0
+
+# commande utilisée pour lister les secrets dans l'espace de noms argocd
+
+kubectl get secrets -n argocd
+
+#commande utilisée pour modifier le secret nommé argocd-initial-admin-secret dans l'espace de noms argocd
+
+kubectl edit secret argocd-initial-admin-secret -n argocd
+
+# commande décode une chaîne encodée en Base64. Le echo envoie la chaîne encodée au base64 --decode via un pipe (|), et le résultat décodé est affiché.
+
+echo SnFKdmdXcUhoNFFNZG5EZg== | base64 --decode
+
+``` 
+
+
+
