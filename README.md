@@ -80,20 +80,19 @@ Ce projet montre comment mettre en place un pipeline **DevSecOps** complet et in
 - **Kubernetes** – Orchestration
 
 ---
-
-## 📂 Structure du projet DevSecOps
+## 📁 Structure du projet DevSecOps
 
 devsecops-demo/
 ├── Dockerfile
 ├── kubernetes/
-│ ├── deployment.yaml
-│ ├── service.yaml
-│ └── ...
+│   ├── deployment.yaml
+│   ├── service.yaml
+│   └── ... (autres manifests)
 ├── src/
 ├── package.json
 ├── vite.config.ts
 ├── tsconfig.json
-├── README.md
+└── README.md
 
 
 ---
