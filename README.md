@@ -81,21 +81,20 @@ Ce projet montre comment mettre en place un pipeline **DevSecOps** complet et in
 
 ---
 ## 📁 Structure du projet DevSecOps
+---
 
 devsecops-demo/
 ├── Dockerfile
 ├── kubernetes/
-│   ├── deployment.yaml
-│   ├── service.yaml
-│   └── ... (autres manifests)
+│ ├── deployment.yaml
+│ ├── service.yaml
+│ └── ... (autres manifests)
 ├── src/
 ├── package.json
 ├── vite.config.ts
 ├── tsconfig.json
 └── README.md
 
-
----
 
 # 🎮 Tic Tac Toe – Implémentation DevSecOps
 
