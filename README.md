@@ -3,12 +3,11 @@
 Ce projet montre comment mettre en place un pipeline **DevSecOps** complet et inclut un **jeu Tic Tac Toe** fonctionnel.
 
 ---
-
 ## 📜 Pipeline DevSecOps (ASCII)
 
 [Developer]
-   │
-   └─> Push code to GitHub
+    │
+    └─> Push code to GitHub
            │
            ▼
       [GitHub Actions CI]
@@ -16,8 +15,8 @@ Ce projet montre comment mettre en place un pipeline **DevSecOps** complet et in
     ┌──────┼─────────────────┐
     │      │                 │
 (1) Lint+Tests      (2) SAST Scan
-(3) Build Docker    (4) Scan image (Trivy)
-                    └─> Fail si vuln HIGH/CRITICAL
+(3) Build Docker     (4) Scan image (Trivy)
+                        └─> Fail si vuln HIGH/CRITICAL
            │
     ┌──────┴───────────┐
 (5) Push Docker Image  (6) Update K8s manifests
@@ -30,7 +29,6 @@ Ce projet montre comment mettre en place un pipeline **DevSecOps** complet et in
                    ▼
        Déploiement sur cluster Kubernetes
        
-
 ---
 
 ## 🔍 Étapes détaillées du pipeline
