@@ -4,27 +4,32 @@ Ce projet montre comment mettre en place un pipeline **DevSecOps** complet et in
 
 ---
 
-## 📜 Diagramme ASCII du pipeline DevSecOps
+## 📜 Pipeline DevSecOps (ASCII)
 
-[ Developer ]
-│
-├── Push code to GitHub
-│
-[ GitHub Actions CI ]
-│
-├── (1) Lint + Tests + Type Check
-├── (2) SAST Scan (CodeQL)
-├── (3) Build Docker Image
-├── (4) Scan de l'image (Trivy)
-│ └── Échec si vulnérabilités HIGH/CRITICAL
-├── (5) Push de l'image vers le registre
-├── (6) Mise à jour des manifests Kubernetes
-│
-[ GitOps Repo ]
-│
-└── (7) ArgoCD détecte les changements
-└── Déploiement sur le cluster Kubernetes
-
+[Developer]
+   │
+   └─> Push code to GitHub
+           │
+           ▼
+      [GitHub Actions CI]
+           │
+    ┌──────┼─────────────────┐
+    │      │                 │
+(1) Lint+Tests      (2) SAST Scan
+(3) Build Docker    (4) Scan image (Trivy)
+                    └─> Fail si vuln HIGH/CRITICAL
+           │
+    ┌──────┴───────────┐
+(5) Push Docker Image  (6) Update K8s manifests
+           │
+           ▼
+       [GitOps Repo]
+           │
+           └─> (7) ArgoCD détecte changements
+                   │
+                   ▼
+       Déploiement sur cluster Kubernetes
+       
 
 ---
 
